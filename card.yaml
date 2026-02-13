@@ -1,0 +1,200 @@
+type: custom:plotly-graph
+title: ld2450 - Карта зон и целей
+refresh_interval: 2
+hours_to_show: current_day
+ha_theme: true
+layout:
+  legend:
+    "y": 8000
+    orientation: h
+  autosize: true
+  margin:
+    autoexpand: true
+    l: 50
+    r: 20
+    t: 20
+    b: 40
+  showlegend: true
+  xaxis:
+    dtick: 1000
+    gridcolor: RGBA(200,200,200,0.15)
+    zerolinecolor: RGBA(200,200,200,0.15)
+    type: number
+    fixedrange: true
+    range:
+      - -4000
+      - 4000
+  yaxis:
+    dtick: 1000
+    gridcolor: RGBA(200,200,200,0.15)
+    zerolinecolor: RGBA(200,200,200,0.15)
+    scaleanchor: x
+    scaleratio: 1
+    fixedrange: true
+    range:
+      - 8000
+      - 0
+entities:
+  - entity: ""
+    name: Цель 1
+    show_value: true
+    unit_of_measurement: мм
+    marker:
+      size: 12
+    line:
+      shape: spline
+      width: 5
+    x:
+      - $ex hass.states["sensor.ld2450_new_target1_x"].state
+    "y":
+      - $ex hass.states["sensor.ld2450_new_target1_y"].state
+  - entity: ""
+    name: Цель 2
+    show_value: true
+    unit_of_measurement: мм
+    marker:
+      size: 12
+    line:
+      shape: spline
+      width: 5
+    x:
+      - $ex hass.states["sensor.ld2450_new_target2_x"].state
+    "y":
+      - $ex hass.states["sensor.ld2450_new_target2_y"].state
+  - entity: ""
+    name: Цель 3
+    show_value: true
+    unit_of_measurement: мм
+    marker:
+      size: 12
+    line:
+      shape: spline
+      width: 5
+    x:
+      - $ex hass.states["sensor.ld2450_new_target3_x"].state
+    "y":
+      - $ex hass.states["sensor.ld2450_new_target3_y"].state
+  - entity: ""
+    name: Зона 1
+    mode: lines
+    fill: toself
+    fillcolor: >-
+      $ex hass.states["binary_sensor.ld2450_new_zone1_presence"].state == "on" ?
+      "RGBA(0,250,0,0.4)" : "RGBA(0,250,0,0.1)"
+    line:
+      color: RGBA(0,250,0,0.9)
+      width: 2
+    x:
+      - $ex hass.states["number.ld2450_new_zone1_x_begin"].state
+      - $ex hass.states["number.ld2450_new_zone1_x_end"].state
+      - $ex hass.states["number.ld2450_new_zone1_x_end"].state
+      - $ex hass.states["number.ld2450_new_zone1_x_begin"].state
+      - $ex hass.states["number.ld2450_new_zone1_x_begin"].state
+    "y":
+      - $ex hass.states["number.ld2450_new_zone1_y_begin"].state
+      - $ex hass.states["number.ld2450_new_zone1_y_begin"].state
+      - $ex hass.states["number.ld2450_new_zone1_y_end"].state
+      - $ex hass.states["number.ld2450_new_zone1_y_end"].state
+      - $ex hass.states["number.ld2450_new_zone1_y_begin"].state
+  - entity: ""
+    name: Зона 2
+    mode: lines
+    fill: toself
+    fillcolor: >-
+      $ex hass.states["binary_sensor.ld2450_new_zone2_presence"].state == "on" ?
+      "RGBA(250,110,0,0.4)" : "RGBA(250,110,0,0.1)"
+    line:
+      color: RGBA(250,110,0,0.9)
+      width: 2
+    x:
+      - $ex hass.states["number.ld2450_new_zone2_x_begin"].state
+      - $ex hass.states["number.ld2450_new_zone2_x_end"].state
+      - $ex hass.states["number.ld2450_new_zone2_x_end"].state
+      - $ex hass.states["number.ld2450_new_zone2_x_begin"].state
+      - $ex hass.states["number.ld2450_new_zone2_x_begin"].state
+    "y":
+      - $ex hass.states["number.ld2450_new_zone2_y_begin"].state
+      - $ex hass.states["number.ld2450_new_zone2_y_begin"].state
+      - $ex hass.states["number.ld2450_new_zone2_y_end"].state
+      - $ex hass.states["number.ld2450_new_zone2_y_end"].state
+      - $ex hass.states["number.ld2450_new_zone2_y_begin"].state
+  - entity: ""
+    name: Зона 3
+    mode: lines
+    fill: toself
+    fillcolor: >-
+      $ex hass.states["binary_sensor.ld2450_new_zone3_presence"].state == "on" ?
+      "RGBA(0,0,250,0.4)" : "RGBA(0,0,250,0.1)"
+    line:
+      color: RGBA(0,0,250,0.9)
+      width: 2
+    x:
+      - $ex hass.states["number.ld2450_new_zone3_x_begin"].state
+      - $ex hass.states["number.ld2450_new_zone3_x_end"].state
+      - $ex hass.states["number.ld2450_new_zone3_x_end"].state
+      - $ex hass.states["number.ld2450_new_zone3_x_begin"].state
+      - $ex hass.states["number.ld2450_new_zone3_x_begin"].state
+    "y":
+      - $ex hass.states["number.ld2450_new_zone3_y_begin"].state
+      - $ex hass.states["number.ld2450_new_zone3_y_begin"].state
+      - $ex hass.states["number.ld2450_new_zone3_y_end"].state
+      - $ex hass.states["number.ld2450_new_zone3_y_end"].state
+      - $ex hass.states["number.ld2450_new_zone3_y_begin"].state
+  - entity: ""
+    name: Исключение 1
+    mode: lines
+    fill: toself
+    fillcolor: >-
+      $ex hass.states["switch.ld2450_new_zout1_enable"].state == "on" ?
+      (hass.states["binary_sensor.ld2450_new_zout1_presence"].state == "on" ?
+      "RGBA(250,0,0,0.4)" : "RGBA(250,0,0,0.2)") : "RGBA(0,0,0,0)"
+    line:
+      color: >-
+        $ex hass.states["switch.ld2450_new_zout1_enable"].state == "on" ?
+        "RGBA(150,0,0,0.9)" : "RGBA(0,0,0,0)"
+      width: 3
+      dash: dash
+    x:
+      - $ex hass.states["number.ld2450_new_zout1_x_begin"].state
+      - $ex hass.states["number.ld2450_new_zout1_x_end"].state
+      - $ex hass.states["number.ld2450_new_zout1_x_end"].state
+      - $ex hass.states["number.ld2450_new_zout1_x_begin"].state
+      - $ex hass.states["number.ld2450_new_zout1_x_begin"].state
+    "y":
+      - $ex hass.states["number.ld2450_new_zout1_y_begin"].state
+      - $ex hass.states["number.ld2450_new_zout1_y_begin"].state
+      - $ex hass.states["number.ld2450_new_zout1_y_end"].state
+      - $ex hass.states["number.ld2450_new_zout1_y_end"].state
+      - $ex hass.states["number.ld2450_new_zout1_y_begin"].state
+  - entity: ""
+    name: Зона покрытия
+    mode: lines
+    line:
+      width: 1
+      color: rgba(100, 100, 100, 0.6)
+      dash: dot
+    x:
+      - 0
+      - 1000
+      - 3700
+      - 3500
+      - 2000
+      - 0
+      - -2000
+      - -3500
+      - -3700
+      - -1000
+      - 0
+    "y":
+      - 0
+      - 500
+      - 3700
+      - 6000
+      - 7400
+      - 8000
+      - 7400
+      - 6000
+      - 3700
+      - 500
+      - 0
+raw_plotly_config: true
